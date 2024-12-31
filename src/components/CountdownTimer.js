@@ -55,11 +55,11 @@ export default function CountdownTimer({ targetDate }) {
 
   return (
     <>
-      <div className="flex justify-center gap-4 mt-8">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8 px-4">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <motion.div
             key={unit}
-            className="text-center p-4 bg-gray-800 rounded-lg min-w-[100px]"
+            className="text-center p-2 sm:p-4 bg-gray-800 rounded-lg min-w-[80px] sm:min-w-[100px]"
             whileHover={{ scale: 1.05 }}
             layout
           >
@@ -67,11 +67,11 @@ export default function CountdownTimer({ targetDate }) {
               key={value}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="text-3xl font-bold"
+              className="text-xl sm:text-3xl font-bold"
             >
-              {value}
+              {String(value).padStart(2, '0')}
             </motion.div>
-            <div className="text-sm text-gray-400 capitalize">{unit}</div>
+            <div className="text-xs sm:text-sm text-gray-400 capitalize">{unit}</div>
           </motion.div>
         ))}
       </div>
@@ -89,11 +89,11 @@ export default function CountdownTimer({ targetDate }) {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              className="fixed inset-0 flex items-center justify-center z-50"
+              className="fixed inset-0 flex items-center justify-center z-50 p-4"
             >
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 rounded-2xl shadow-2xl text-center">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 sm:p-8 rounded-2xl shadow-2xl text-center max-w-md mx-auto">
                 <motion.h2 
-                  className="text-4xl font-bold mb-4"
+                  className="text-2xl sm:text-4xl font-bold mb-4"
                   animate={{ 
                     scale: [1, 1.2, 1],
                     rotate: [0, 5, -5, 0]
@@ -105,13 +105,13 @@ export default function CountdownTimer({ targetDate }) {
                 >
                   🎉 Welcome to 2025! 🚀
                 </motion.h2>
-                <p className="text-xl">
+                <p className="text-lg sm:text-xl">
                   Time to check those predictions!
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-6 px-6 py-3 bg-white text-purple-600 rounded-full font-bold"
+                  className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-white text-purple-600 rounded-full font-bold text-sm sm:text-base"
                   onClick={() => setShowCelebration(false)}
                 >
                   Let&apos;s See!
