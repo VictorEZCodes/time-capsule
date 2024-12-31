@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 
-export default function CountdownTimer({ targetDate }) {
+export default function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [showCelebration, setShowCelebration] = useState(false);
   const [windowSize, setWindowSize] = useState({
@@ -12,7 +12,8 @@ export default function CountdownTimer({ targetDate }) {
   });
 
   function calculateTimeLeft() {
-    const difference = new Date(targetDate) - new Date();
+    const target = new Date('2025-01-01T00:00:00');
+    const difference = target - new Date();
     
     if (difference <= 0) {
       return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -51,7 +52,7 @@ export default function CountdownTimer({ targetDate }) {
       clearInterval(timer);
       window.removeEventListener('resize', handleResize);
     };
-  }, [targetDate]);
+  }, []);
 
   return (
     <>
